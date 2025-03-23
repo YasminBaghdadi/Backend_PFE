@@ -63,7 +63,6 @@ public class CommandeService implements CommandeInterface {
         return response;
     }
 
-
     @Override
     public void supprimerCommande(Long idCmnd) {
         // Vérifier si la commande existe

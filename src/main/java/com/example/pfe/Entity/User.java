@@ -1,5 +1,6 @@
 package com.example.pfe.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 import java.util.HashSet;
@@ -32,6 +33,7 @@ public class User {
 
     @ManyToOne
     @JoinColumn(name = "idRole", nullable = false)
+    @JsonIgnore
     private Role role;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)

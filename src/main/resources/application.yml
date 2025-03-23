@@ -1,0 +1,45 @@
+  server:
+    port: 8081
+
+  lombok:
+    add-lombok-annotations: true
+
+  spring:
+    application:
+      name: pfe
+    datasource:
+      url: jdbc:mysql://localhost:3306/psecurity?createDatabaseIfNotExist=true&useUnicode=true&useSSL=false
+      username: root
+      password: ""
+    jpa:
+      show-sql: true
+      hibernate:
+        ddl-auto: update
+      properties:
+        hibernate:
+          dialect: org.hibernate.dialect.MySQLDialect
+    security:
+      oauth2:
+        client:
+          registration:
+            demo:
+              client-id: angular
+              #client-secret: Z0uT2GD7m0usawEvO11iMti8l3nfMnYf
+              provider: keycloak
+              scope: openid, profile, email
+              authorization-grant-type: client-credentials
+          provider:
+            keycloak:
+              issuer-uri: http://localhost:8086/realms/master
+              token-uri: http://localhost:8086/realms/master/protocol/openid-connect/token
+              authorization-uri: http://localhost:8086/realms/master/protocol/openid-connect/auth
+              user-info-uri: http://localhost:8086/realms/master/protocol/openid-connect/userinfo
+              jwk-set-uri: http://localhost:8086/realms/master/protocol/openid-connect/certs
+
+  access:
+    control:
+      origin: http://localhost:4200
+  logging:
+    level:
+      org.springframework.security: trace
+
