@@ -1,5 +1,6 @@
 package com.example.pfe.Entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
@@ -8,11 +9,13 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
+import java.io.Serializable;
+
 @Data
 @Entity
 @Getter
 @Setter
-public class Image {
+public class Image implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idImage;
@@ -26,10 +29,12 @@ public class Image {
 
     @OneToOne
     @JoinColumn(name = "idUser", referencedColumnName = "idUser", unique = true, nullable = true)
+    @JsonBackReference
     private User user;
 
 
     @OneToOne
     @JoinColumn(name="idPlat", referencedColumnName = "idPlat", unique = true)
+    @JsonBackReference
     private Plat plat;
 }

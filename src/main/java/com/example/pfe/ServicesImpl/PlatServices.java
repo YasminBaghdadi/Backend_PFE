@@ -35,6 +35,7 @@ public class PlatServices implements PlatInterface {
     }
     @Override
     public List<Plat> getplats() {
+
         return platRepository.findAll();
     }
 

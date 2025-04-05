@@ -43,3 +43,9 @@
     level:
       org.springframework.security: trace
 
+  Paypal:
+    client-id: AaeVvFDTxSgoDqESGgni5eWESpdFXf-SB5Wwryr49csNOMV_aHnoOIOHlnge4iDP4N7UsT84PB5ykuYa
+    client-secret: ED7LlAefpSoNhzwu4zud15XGKVli79fJv9dEHkT1iz80xkG-fAPXh7AP_O0N9z159PFgTheHxdl-PLFB
+    mode: sandbox   # use sandbox for testing and 'live' for production
+
+

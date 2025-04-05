@@ -50,9 +50,12 @@ public class securityConfig  {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.OPTIONS, "/**")).permitAll()
                         .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.GET, "/projet/getAllusers")).permitAll()
+                        .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.GET, "/Plat/getplats")).permitAll()
+
                         // hasAuthority yaani l accees keen l admin
                         //.requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.GET, "/projet/getAllusers")).hasAuthority("ROLE_ADMIN")
                         .anyRequest().authenticated()
+
                 )
                 .oauth2ResourceServer(oauth2 -> oauth2
                         // decode les tokens JWT pour authentifier les users

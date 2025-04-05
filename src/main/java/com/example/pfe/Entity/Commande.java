@@ -1,5 +1,6 @@
 package com.example.pfe.Entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Setter;
@@ -29,7 +30,10 @@ public class Commande {
             joinColumns = @JoinColumn(name = "idCmnd"),
             inverseJoinColumns = @JoinColumn(name = "idPlat")
     )
+    @JsonManagedReference
     private List<Plat> plats;
+
+
 
     public void calculerTotal() {
         this.total = plats.stream()

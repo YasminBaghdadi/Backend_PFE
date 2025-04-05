@@ -1,8 +1,11 @@
 package com.example.pfe.Entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
+
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 import jakarta.persistence.GeneratedValue;
@@ -12,7 +15,7 @@ import jakarta.persistence.Id;
 @Entity
 @Data
 @Table(name = "User")
-public class User {
+public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idUser;
@@ -40,6 +43,7 @@ public class User {
     private Set<Commande> commandes = new HashSet<>();
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, optional = true)
+    @JsonManagedReference
     private Image image;
 
 
